@@ -81,28 +81,22 @@ public class LinkedList {
 		if (currentNode == null) {
 			System.out.println("List is null, " + node.getData() + " is now head of List.");
 			addNode(node);
-		} else if (searchNode(index) == true) {
-			while (tempNode.getData() != index) {
-				tempNode = tempNode.getNext();
-			}
+		} else {
+			int num = 0;
 			
-			currentNode = tempNode.getNext();
-			tempNode.setNext(node);
-			addNode(currentNode);
-		} else {
-			System.out.println("Node absent. Can't insert.");
-		}
-	}
-	
-	public void insertNode(Node node) {
-		Node currentNode = head;
-		
-		if (currentNode == null) {
-			System.out.println("List is null, " + node.getData() + " is now head of List.");
-			addNode(node);
-		} else {
-			setHead(node);
-			addNode(currentNode);
+			while (true) {
+				if (num == index) {
+					currentNode = tempNode.getNext();
+					tempNode.setNext(node);
+					addNode(currentNode);
+					break;
+				} else if (tempNode == null) {
+					System.out.println("index not present");
+					break;
+				}
+				tempNode = tempNode.getNext();
+				num++;
+			}
 		}
 	}
 	
@@ -113,7 +107,7 @@ public class LinkedList {
 		
 		if (currentNode == null) {
 			System.out.println("Nothing to delete.");
-		} else if (searchNode(index) == true) {
+		} else if (searchNode(index)) {
 			if (tempNode.getData() != index) {
 				while (tempNode.getNext().getData() != index) {
 					tempNode = tempNode.getNext();
