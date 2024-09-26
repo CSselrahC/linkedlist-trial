@@ -17,8 +17,8 @@ public class MainProgram {
 		list.displayList();
 		
 		// my code
-		Scanner scan = new Scanner (System.in);
-
+		Scanner scan = new Scanner(System.in);
+				
 		while (true) {
 			int choice;
 			System.out.println("\n---------------------------------------------------");
@@ -32,26 +32,11 @@ public class MainProgram {
 				System.out.print("Add number: ");
 				insert = scan.nextInt();
 				
-				while (true) {
-					char head;
-					System.out.print("Insert as head? (Y) or (N): ");
-					head = scan.next().charAt(0);
-					
-					if (head == 'Y' || head == 'y') {
-						list.insertNode((new Node(insert)));
-						list.displayList();
-						break;
-					} else if (head == 'N' || head == 'n') {
-						System.out.print("Insert " + insert + " next to which number: ");
-						index = scan.nextInt();
-						
-						list.insertNode((new Node(insert)), index);
-						list.displayList();
-						break;
-					} else {
-						System.out.println("-------Please enter only Y or N!-------");
-					}
-				}
+				System.out.print("Insert " + insert + " next to which index: ");
+				index = scan.nextInt();
+				
+				list.insertNode(new Node(insert), index);
+				list.displayList();
 			} else if (choice == 2) {
 				int delete;
 				System.out.print("Which node to delete: ");
@@ -63,10 +48,10 @@ public class MainProgram {
 				System.out.println("Current List: ");
 				list.displayList();
 			} else if (choice == 4) {
-				System.out.println("-------Program Terminated-------");
+				System.out.println("-----------------Program Terminated-----------------");
 				break;
 			} else {
-				System.out.println("-------Error! Try Again!-------");
+				System.out.println("------------------Error! Try Again!-----------------");
 			}
 		}
 		scan.close();
